@@ -1,20 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1aju80d63wxo"]
+[gd_scene load_steps=4 format=3 uid="uid://c1aju80d63wxo"]
 
 [ext_resource type="PackedScene" uid="uid://ckk1oyqtduuu5" path="res://scenes/GasGiant.tscn" id="1_lm506"]
+[ext_resource type="Texture2D" uid="uid://b18yqi3p2sc8q" path="res://textures/Background.png" id="1_oxqj5"]
 [ext_resource type="PackedScene" uid="uid://d2wxmlsytkn8e" path="res://scenes/Venus.tscn" id="2_wj7bx"]
 
 [node name="Node" type="Node"]
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(588, 318)
+texture = ExtResource("1_oxqj5")
+
 [node name="GasGiant" parent="." instance=ExtResource("1_lm506")]
 
 [node name="LightSource" parent="GasGiant/PlanetSprite" index="0"]
-position = Vector2(-1.98065, 0.277525)
+position = Vector2(1.2416, -1.56794)
 
 [node name="Venus" parent="." instance=ExtResource("2_wj7bx")]
 position = Vector2(512, 0)
 
 [node name="LightSource" parent="Venus/PlanetSprite" index="0"]
-position = Vector2(-1.98065, 0.277525)
+position = Vector2(1.2416, -1.56794)
 
 [editable path="GasGiant"]
 [editable path="Venus"]
