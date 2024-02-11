@@ -1,25 +1,142 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1aju80d63wxo"]
+[gd_scene load_steps=22 format=3 uid="uid://c1aju80d63wxo"]
 
 [ext_resource type="PackedScene" uid="uid://ckk1oyqtduuu5" path="res://scenes/GasGiant.tscn" id="1_lm506"]
 [ext_resource type="Texture2D" uid="uid://b18yqi3p2sc8q" path="res://textures/Background.png" id="1_oxqj5"]
 [ext_resource type="PackedScene" uid="uid://d2wxmlsytkn8e" path="res://scenes/Venus.tscn" id="2_wj7bx"]
+[ext_resource type="Shader" path="res://materials/GasGiant.gdshader" id="3_6uv3n"]
+[ext_resource type="PackedScene" uid="uid://ue66jt37vpmb" path="res://scenes/Saturn.tscn" id="4_deyrb"]
+[ext_resource type="Shader" path="res://materials/Planet.gdshader" id="5_yl55s"]
+[ext_resource type="Texture2D" uid="uid://combtbbuiwddg" path="res://textures/Venus_512x256.png" id="6_8xn36"]
+[ext_resource type="Texture2D" uid="uid://baxlepnir0g5k" path="res://textures/Saturn_512.png" id="8_7dbpw"]
+[ext_resource type="Shader" path="res://materials/Ring.gdshader" id="9_fikf2"]
+[ext_resource type="Texture2D" uid="uid://ddgqpn6mfayal" path="res://textures/Saturn_Ring_512_alpha.png" id="10_n7f1a"]
+[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/Ring.tscn" id="11_1fl23"]
+[ext_resource type="Texture2D" uid="uid://dqkjttiunc4fp" path="res://materials/rings_gradient_1d.tres" id="12_3v0rc"]
+
+[sub_resource type="Gradient" id="Gradient_7cpw0"]
+offsets = PackedFloat32Array(0, 0.114053, 0.301426, 0.378819, 0.427699, 0.484725, 0.545825, 0.580448, 0.602851, 0.670061, 0.847251, 0.95112, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.67451, 0.85098, 0.827451, 1, 0.0690992, 0.52413, 0.447457, 1, 1, 1, 0, 1, 0.443137, 0.862745, 0.576471, 1, 1, 0, 0.670588, 1, 0.2849, 0.406175, 0.77, 1, 2.88785e-06, 0.699712, 0.915032, 1, 0.2485, 0.71, 0.371567, 1, 0.639216, 0.619608, 0.415686, 1, 0.633547, 0.375096, 0.470169, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c450r"]
+gradient = SubResource("Gradient_7cpw0")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fm7i4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1x2gq"]
+seamless = true
+noise = SubResource("FastNoiseLite_fm7i4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n46p0"]
+resource_local_to_scene = true
+shader = ExtResource("3_6uv3n")
+shader_parameter/ambient_light = Color(0, 0, 0, 1)
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.749664, 0.487856, 0.447214)
+shader_parameter/noise_magnitude = 0.2
+shader_parameter/rotation_speed = 0.0125
+shader_parameter/convexity = 1.0
+shader_parameter/margin = 1.125
+shader_parameter/specular_power = 5.0
+shader_parameter/specular_intensity = 0.5
+shader_parameter/image_color = SubResource("GradientTexture1D_c450r")
+shader_parameter/noise_color = SubResource("NoiseTexture2D_1x2gq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdmi3"]
+resource_local_to_scene = true
+shader = ExtResource("5_yl55s")
+shader_parameter/ambient_light = Color(0, 0, 0, 1)
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.749664, 0.487856, 0.447214)
+shader_parameter/rotation_speed = 0.0125
+shader_parameter/convexity = 1.0
+shader_parameter/margin = 1.125
+shader_parameter/specular_power = 5.0
+shader_parameter/specular_intensity = 0.25
+shader_parameter/image_color = ExtResource("6_8xn36")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_on87w"]
+resource_local_to_scene = true
+shader = ExtResource("5_yl55s")
+shader_parameter/ambient_light = Color(0, 0, 0, 1)
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.749664, 0.487856, 0.447214)
+shader_parameter/rotation_speed = 0.0125
+shader_parameter/convexity = 1.0
+shader_parameter/margin = 1.125
+shader_parameter/specular_power = 5.0
+shader_parameter/specular_intensity = 0.25
+shader_parameter/image_color = ExtResource("8_7dbpw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqixr"]
+resource_local_to_scene = true
+shader = ExtResource("9_fikf2")
+shader_parameter/rim_distance = 0.533976
+shader_parameter/shadow_width = 0.409339
+shader_parameter/shadow_edge_dispersion = 0.01
+shader_parameter/light_direction = Vector2(0.707, 0.707)
+shader_parameter/rings_texture = ExtResource("10_n7f1a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rsgh"]
+resource_local_to_scene = true
+shader = ExtResource("9_fikf2")
+shader_parameter/rim_distance = 0.5
+shader_parameter/shadow_width = 0.425
+shader_parameter/shadow_edge_dispersion = 0.025
+shader_parameter/light_direction = Vector2(0.707, 0.707)
+shader_parameter/rings_texture = ExtResource("12_3v0rc")
 
 [node name="Node" type="Node"]
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -10
 position = Vector2(588, 318)
 texture = ExtResource("1_oxqj5")
 
 [node name="GasGiant" parent="." instance=ExtResource("1_lm506")]
+scale = Vector2(0.5, 0.5)
+
+[node name="PlanetSprite" parent="GasGiant" index="0"]
+material = SubResource("ShaderMaterial_n46p0")
 
 [node name="LightSource" parent="GasGiant/PlanetSprite" index="0"]
-position = Vector2(1.2416, -1.56794)
+position = Vector2(-1.6763, 1.09088)
 
 [node name="Venus" parent="." instance=ExtResource("2_wj7bx")]
-position = Vector2(512, 0)
+position = Vector2(256, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlanetSprite" parent="Venus" index="0"]
+material = SubResource("ShaderMaterial_fdmi3")
 
 [node name="LightSource" parent="Venus/PlanetSprite" index="0"]
-position = Vector2(1.2416, -1.56794)
+position = Vector2(-1.6763, 1.09088)
+
+[node name="Saturn" parent="." node_paths=PackedStringArray("ring") instance=ExtResource("4_deyrb")]
+position = Vector2(647, 129)
+ring = NodePath("PlanetSprite/Ring")
+
+[node name="PlanetSprite" parent="Saturn" index="0"]
+material = SubResource("ShaderMaterial_on87w")
+
+[node name="LightSource" parent="Saturn/PlanetSprite" index="0"]
+position = Vector2(-1.6763, 1.09088)
+
+[node name="Ring" parent="Saturn/PlanetSprite" index="1"]
+material = SubResource("ShaderMaterial_pqixr")
+scale = Vector2(1.972, 1.972)
+radius_outer = 1.972
+radius_inner = 1.053
+
+[node name="Base ring size" type="Node2D" parent="."]
+position = Vector2(223, 438)
+scale = Vector2(100, 100)
+
+[node name="Ring" parent="Base ring size" instance=ExtResource("11_1fl23")]
+material = SubResource("ShaderMaterial_4rsgh")
+scale = Vector2(2, 2)
+radius_outer = 2.0
+radius_inner = 1.0
 
 [editable path="GasGiant"]
 [editable path="Venus"]
+[editable path="Saturn"]
