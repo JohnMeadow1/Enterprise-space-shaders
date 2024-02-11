@@ -112,7 +112,7 @@ material = SubResource("ShaderMaterial_fdmi3")
 position = Vector2(-1.6763, 1.09088)
 
 [node name="Saturn" parent="." node_paths=PackedStringArray("ring") instance=ExtResource("4_deyrb")]
-position = Vector2(647, 129)
+position = Vector2(578, 329)
 ring = NodePath("PlanetSprite/Ring")
 
 [node name="PlanetSprite" parent="Saturn" index="0"]

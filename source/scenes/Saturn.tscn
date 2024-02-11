@@ -18,6 +18,7 @@ shader_parameter/light_direction = Vector2(0.707, 0.707)
 shader_parameter/rings_texture = ExtResource("7_3s0gu")
 
 [node name="Saturn" type="Node2D" node_paths=PackedStringArray("ring")]
+position = Vector2(600, 309)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_x37w7")
 ring = NodePath("PlanetSprite/Ring")
@@ -25,7 +26,6 @@ metadata/_edit_horizontal_guides_ = [15.0]
 
 [node name="PlanetSprite" type="Sprite2D" parent="."]
 material = ExtResource("2_ji6hm")
-position = Vector2(256, 256)
 scale = Vector2(256, 256)
 texture = ExtResource("3_mwncb")
 
