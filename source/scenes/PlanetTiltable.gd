@@ -34,8 +34,9 @@ func _process(delta):
 	set_tilts()
 	
 func set_tilts():
-	sprite.material.set_shader_parameter("planet_tilt", planet_tilt)
-	if ring:
+	if sprite:
+		sprite.material.set_shader_parameter("planet_tilt", planet_tilt)
 		sprite.material.set_shader_parameter("rings_inner_radius", ring.radius_inner)
 		sprite.material.set_shader_parameter("rings_outer_radius", ring.radius_outer)
+	if ring:
 		ring.tilt = planet_tilt

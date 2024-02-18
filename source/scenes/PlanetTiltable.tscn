@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://materials/RingTiltable.gdshader" id="7_jbuur"]
 [ext_resource type="Texture2D" uid="uid://ddgqpn6mfayal" path="res://textures/Saturn_Ring_512_alpha.png" id="7_xsah2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ngt0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8suj"]
 resource_local_to_scene = true
 shader = ExtResource("7_jbuur")
 shader_parameter/rim_distance = 0.342231
@@ -16,10 +16,10 @@ shader_parameter/shadow_width = 0.32512
 shader_parameter/shadow_edge_dispersion = 0.025
 shader_parameter/light_direction = Vector2(0.707, 0.707)
 shader_parameter/ring_shift = 0.0
-shader_parameter/tilt = 0.925606
+shader_parameter/tilt = 1.47943
 shader_parameter/rings_texture = ExtResource("7_xsah2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ddti"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_us6b4"]
 resource_local_to_scene = true
 shader = ExtResource("7_jbuur")
 shader_parameter/rim_distance = 0.342231
@@ -27,14 +27,14 @@ shader_parameter/shadow_width = 0.32512
 shader_parameter/shadow_edge_dispersion = 0.025
 shader_parameter/light_direction = Vector2(0.707, 0.707)
 shader_parameter/ring_shift = 1.0
-shader_parameter/tilt = 0.925606
+shader_parameter/tilt = 1.47943
 shader_parameter/rings_texture = ExtResource("7_xsah2")
 
 [node name="TiltablePlanet" type="Node2D" node_paths=PackedStringArray("ring")]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_8d7ke")
 ring = NodePath("PlanetSprite/RingTiltable")
-planet_tilt = 0.092993
+planet_tilt = -0.59929
 metadata/_edit_horizontal_guides_ = [15.0]
 
 [node name="PlanetSprite" type="Sprite2D" parent="."]
@@ -54,15 +54,15 @@ texture = ExtResource("5_26du0")
 metadata/_edit_lock_ = true
 
 [node name="RingTiltable" parent="PlanetSprite" instance=ExtResource("6_n4y07")]
-scale = Vector2(2.922, 0.271726)
-tilt = 0.092993
+scale = Vector2(2.922, -1.75113)
+tilt = -0.59929
 radius_outer = 2.922
 
 [node name="Top" parent="PlanetSprite/RingTiltable" index="0"]
-material = SubResource("ShaderMaterial_5ngt0")
+material = SubResource("ShaderMaterial_n8suj")
 metadata/_edit_group_ = true
 
 [node name="Bottom" parent="PlanetSprite/RingTiltable" index="1"]
-material = SubResource("ShaderMaterial_7ddti")
+material = SubResource("ShaderMaterial_us6b4")
 
 [editable path="PlanetSprite/RingTiltable"]
