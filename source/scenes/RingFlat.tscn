@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5j2s1fkejwet"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scenes/RingFlat.gd" id="1_dyiv3"]
 [ext_resource type="Material" uid="uid://uyhg54dbtpeu" path="res://materials/Ring.material" id="1_xlml3"]

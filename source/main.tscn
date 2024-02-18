@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bbocp7e3knon2" path="res://scenes/PlanetTiltable.tscn" id="12_1wkwv"]
 [ext_resource type="Texture2D" uid="uid://dqkjttiunc4fp" path="res://materials/rings_gradient_1d.tres" id="12_3v0rc"]
 [ext_resource type="Shader" path="res://materials/PlanetTiltable.gdshader" id="13_m3dht"]
-[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/RingFlat.tscn" id="13_phobg"]
+[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/RingTiltable.tscn" id="13_phobg"]
 [ext_resource type="Texture2D" uid="uid://diwqlhu3ksde3" path="res://textures/Earth_colormap_2k.png" id="14_68edd"]
 
 [sub_resource type="Gradient" id="Gradient_7cpw0"]
@@ -34,7 +34,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_6uv3n")
 shader_parameter/ambient_light = Color(0, 0, 0, 1)
 shader_parameter/light_color = Color(1, 1, 1, 1)
-shader_parameter/light_direction = Vector3(-0.883187, -0.141354, 0.447214)
+shader_parameter/light_direction = Vector3(-0.335359, -0.829177, 0.447214)
 shader_parameter/noise_magnitude = 0.2
 shader_parameter/rotation_speed = 0.0125
 shader_parameter/convexity = 1.0
@@ -49,7 +49,7 @@ resource_local_to_scene = true
 shader = ExtResource("5_yl55s")
 shader_parameter/ambient_light = Color(0, 0, 0, 1)
 shader_parameter/light_color = Color(1, 1, 1, 1)
-shader_parameter/light_direction = Vector3(-0.883187, -0.141354, 0.447214)
+shader_parameter/light_direction = Vector3(-0.335359, -0.829177, 0.447214)
 shader_parameter/rotation_speed = 0.0125
 shader_parameter/convexity = 1.0
 shader_parameter/margin = 1.0
@@ -74,14 +74,14 @@ shader_parameter/rotation_speed = 0.0125
 shader_parameter/margin = 1.0
 shader_parameter/specular_power = 5.0
 shader_parameter/specular_intensity = 0.25
-shader_parameter/planet_tilt = -0.797483
+shader_parameter/planet_tilt = 0.663311
 shader_parameter/rings_outer_radius = 2.922
 shader_parameter/rings_inner_radius = 1.0
-shader_parameter/planet_matrix = Basis(-0.0792685, 0.946838, -0.311791, 0, 0.312775, 0.949827, 0.996853, 0.0752914, -0.0247932)
+shader_parameter/planet_matrix = Basis(0.559043, 0.71586, 0.418348, 0, 0.504557, -0.863378, -0.829139, 0.482665, 0.282069)
 shader_parameter/image_color = ExtResource("14_68edd")
 shader_parameter/ring_color = SubResource("GradientTexture1D_sij4e")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t2fn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwgig"]
 resource_local_to_scene = true
 shader = ExtResource("9_vwx0e")
 shader_parameter/rim_distance = 0.342231
@@ -89,10 +89,10 @@ shader_parameter/shadow_width = 0.32512
 shader_parameter/shadow_edge_dispersion = 0.025
 shader_parameter/light_direction = Vector2(0.707, 0.707)
 shader_parameter/ring_shift = 0.0
-shader_parameter/tilt = 1.63799
+shader_parameter/tilt = 0.469351
 shader_parameter/rings_texture = ExtResource("10_wonk0")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1eqxx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16gem"]
 resource_local_to_scene = true
 shader = ExtResource("9_vwx0e")
 shader_parameter/rim_distance = 0.342231
@@ -100,10 +100,10 @@ shader_parameter/shadow_width = 0.32512
 shader_parameter/shadow_edge_dispersion = 0.025
 shader_parameter/light_direction = Vector2(0.707, 0.707)
 shader_parameter/ring_shift = 1.0
-shader_parameter/tilt = 1.63799
+shader_parameter/tilt = 0.469351
 shader_parameter/rings_texture = ExtResource("10_wonk0")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcc2v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgjlt"]
 resource_local_to_scene = true
 shader = ExtResource("9_fikf2")
 shader_parameter/rim_distance = 0.666667
@@ -128,7 +128,7 @@ scale = Vector2(0.5, 0.5)
 material = SubResource("ShaderMaterial_n46p0")
 
 [node name="LightSource" parent="GasGiant/PlanetSprite" index="0"]
-position = Vector2(-1.97487, -0.316076)
+position = Vector2(-0.749886, -1.8541)
 
 [node name="Icon" parent="GasGiant/PlanetSprite/LightSource" index="0"]
 z_index = -2
@@ -141,7 +141,7 @@ scale = Vector2(0.5, 0.5)
 material = SubResource("ShaderMaterial_y00f8")
 
 [node name="LightSource" parent="Venus/PlanetSprite" index="0"]
-position = Vector2(-1.97487, -0.316076)
+position = Vector2(-0.749886, -1.8541)
 
 [node name="Icon" parent="Venus/PlanetSprite/LightSource" index="0"]
 z_index = -2
@@ -149,7 +149,7 @@ z_index = -2
 [node name="Earth" parent="." node_paths=PackedStringArray("ring") instance=ExtResource("12_1wkwv")]
 position = Vector2(128, 640)
 ring = NodePath("PlanetSprite/RingTiltable")
-planet_tilt = -0.797483
+planet_tilt = 0.663311
 
 [node name="PlanetSprite" parent="Earth" index="0"]
 material = SubResource("ShaderMaterial_nvys5")
@@ -159,29 +159,30 @@ position = Vector2(1.52344, 0.1875)
 
 [node name="RingTiltable" parent="Earth/PlanetSprite" index="1"]
 visible = false
-scale = Vector2(2.922, -2.33024)
-tilt = -0.797483
+scale = Vector2(2.922, 1.9382)
+tilt = 0.663311
 
 [node name="Top" parent="Earth/PlanetSprite/RingTiltable" index="0"]
-material = SubResource("ShaderMaterial_7t2fn")
+material = SubResource("ShaderMaterial_hwgig")
 
 [node name="Bottom" parent="Earth/PlanetSprite/RingTiltable" index="1"]
-material = SubResource("ShaderMaterial_1eqxx")
+material = SubResource("ShaderMaterial_16gem")
 
-[node name="Saturn" parent="." instance=ExtResource("4_deyrb")]
+[node name="Saturn" parent="." node_paths=PackedStringArray("ring") instance=ExtResource("4_deyrb")]
 position = Vector2(502, 255)
+ring = NodePath("PlanetSprite/Ring")
 
 [node name="Base ring size" type="Node2D" parent="."]
 position = Vector2(693, 79)
 scale = Vector2(30, 30)
 
 [node name="Ring" parent="Base ring size" instance=ExtResource("13_phobg")]
-material = SubResource("ShaderMaterial_lcc2v")
+material = SubResource("ShaderMaterial_fgjlt")
 
 [node name="TiltableSaturn" parent="." node_paths=PackedStringArray("ring") instance=ExtResource("12_1wkwv")]
 position = Vector2(1152, 256)
 ring = NodePath("PlanetSprite/RingTiltable")
-planet_tilt = -0.797483
+planet_tilt = 0.663311
 
 [editable path="GasGiant"]
 [editable path="Venus"]
