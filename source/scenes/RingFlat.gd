@@ -1,5 +1,6 @@
 @tool
 extends Sprite2D
+class_name RingFlat
 
 @export_range(1.0,1000.0) var radius_outer = 2.32
 @export_range(1.0,1000.0) var radius_inner = 1.239
