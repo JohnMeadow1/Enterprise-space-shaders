@@ -9,7 +9,7 @@ uniform vec2 light_direction = vec2(0.707, 0.707);
 void fragment() {
 	vec2 uv_from_center = UV * 2.0 - 1.0;
 	float y = (length(uv_from_center) - rim_distance) / (1.0 - rim_distance);
-	float x = atan(uv_from_center.y, uv_from_center.x) / TAU;
+	float x = 0.5;
 	
 	float shade_cross = abs(light_direction.x * uv_from_center.y - light_direction.y * uv_from_center.x);
 	float shade_dot = dot(light_direction, uv_from_center);
