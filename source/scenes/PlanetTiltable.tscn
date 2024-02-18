@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbocp7e3knon2"]
+
+[ext_resource type="Script" path="res://scenes/PlanetTiltable.gd" id="1_8d7ke"]
+[ext_resource type="Texture2D" uid="uid://b18yqi3p2sc8q" path="res://textures/Background.png" id="2_cttxp"]
+[ext_resource type="Material" uid="uid://5xs0tin2pdx0" path="res://materials/PlanetTiltable.material" id="3_7ie3f"]
+[ext_resource type="Texture2D" uid="uid://cfrvraog5ass0" path="res://textures/2x2.png" id="4_jtna6"]
+[ext_resource type="Texture2D" uid="uid://dhd5v60co6hle" path="res://icon.svg" id="5_26du0"]
+[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/RingTiltable.tscn" id="6_n4y07"]
+[ext_resource type="Shader" path="res://materials/RingTiltable.gdshader" id="7_jbuur"]
+[ext_resource type="Texture2D" uid="uid://dqkjttiunc4fp" path="res://materials/rings_gradient_1d.tres" id="8_lhgsw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3sef"]
+resource_local_to_scene = true
+shader = ExtResource("7_jbuur")
+shader_parameter/rim_distance = 0.342231
+shader_parameter/shadow_width = 0.32512
+shader_parameter/shadow_edge_dispersion = 0.025
+shader_parameter/light_direction = Vector2(0.707, 0.707)
+shader_parameter/ring_shift = 0.0
+shader_parameter/tilt = 0.865091
+shader_parameter/rings_texture = ExtResource("8_lhgsw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okixv"]
+resource_local_to_scene = true
+shader = ExtResource("7_jbuur")
+shader_parameter/rim_distance = 0.342231
+shader_parameter/shadow_width = 0.32512
+shader_parameter/shadow_edge_dispersion = 0.025
+shader_parameter/light_direction = Vector2(0.707, 0.707)
+shader_parameter/ring_shift = 1.0
+shader_parameter/tilt = 0.865091
+shader_parameter/rings_texture = ExtResource("8_lhgsw")
+
+[node name="Saturn" type="Node2D" node_paths=PackedStringArray("ring")]
+position = Vector2(600, 300)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_8d7ke")
+ring = NodePath("PlanetSprite/RingTiltable")
+planet_tilt = 0.168637
+metadata/_edit_horizontal_guides_ = [15.0]
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+scale = Vector2(2, 2)
+texture = ExtResource("2_cttxp")
+metadata/_edit_lock_ = true
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+material = ExtResource("3_7ie3f")
+scale = Vector2(256, 256)
+texture = ExtResource("4_jtna6")
+
+[node name="LightSource" type="Marker2D" parent="PlanetSprite"]
+position = Vector2(-2.78906, 0.523438)
+scale = Vector2(0.0078125, 0.0078125)
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="PlanetSprite/LightSource"]
+z_index = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_26du0")
+metadata/_edit_lock_ = true
+
+[node name="RingTiltable" parent="PlanetSprite" instance=ExtResource("6_n4y07")]
+scale = Vector2(2.922, 0.492756)
+tilt = 0.168637
+radius_outer = 2.922
+
+[node name="Top" parent="PlanetSprite/RingTiltable" index="0"]
+material = SubResource("ShaderMaterial_y3sef")
+metadata/_edit_group_ = true
+
+[node name="Bottom" parent="PlanetSprite/RingTiltable" index="1"]
+material = SubResource("ShaderMaterial_okixv")
+
+[editable path="PlanetSprite/RingTiltable"]
