@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfrvraog5ass0" path="res://textures/2x2.png" id="2_ydybn"]
 [ext_resource type="Texture2D" uid="uid://ddgqpn6mfayal" path="res://textures/Saturn_Ring_512_alpha.png" id="3_nm4vc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hgie"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isofa"]
 resource_local_to_scene = true
 shader = ExtResource("2_i7ctq")
 shader_parameter/rim_distance = 0.5
@@ -16,7 +16,7 @@ shader_parameter/ring_shift = 0.0
 shader_parameter/tilt = 0.2
 shader_parameter/rings_texture = ExtResource("3_nm4vc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sqdw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_att24"]
 resource_local_to_scene = true
 shader = ExtResource("2_i7ctq")
 shader_parameter/rim_distance = 0.5
@@ -28,19 +28,19 @@ shader_parameter/tilt = 0.2
 shader_parameter/rings_texture = ExtResource("3_nm4vc")
 
 [node name="RingTiltable" type="Node2D"]
-scale = Vector2(256, 256)
+scale = Vector2(2, 2)
 script = ExtResource("1_dyiv3")
 
 [node name="Top" type="Sprite2D" parent="."]
 z_index = -1
-material = SubResource("ShaderMaterial_4hgie")
+material = SubResource("ShaderMaterial_isofa")
 scale = Vector2(1, 0.5)
 texture = ExtResource("2_ydybn")
 offset = Vector2(0, -1)
 
 [node name="Bottom" type="Sprite2D" parent="."]
 z_as_relative = false
-material = SubResource("ShaderMaterial_5sqdw")
+material = SubResource("ShaderMaterial_att24")
 scale = Vector2(1, 0.5)
 texture = ExtResource("2_ydybn")
 offset = Vector2(0, 1)

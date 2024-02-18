@@ -1,28 +1,27 @@
 [gd_scene load_steps=9 format=3 uid="uid://ue66jt37vpmb"]
 
-[ext_resource type="Script" path="res://scenes/LightRotate.gd" id="1_x37w7"]
+[ext_resource type="Script" path="res://scenes/Planet.gd" id="1_x37w7"]
 [ext_resource type="Material" uid="uid://dthshi3d5t18x" path="res://materials/Planet.material" id="2_ji6hm"]
 [ext_resource type="Texture2D" uid="uid://cfrvraog5ass0" path="res://textures/2x2.png" id="3_mwncb"]
 [ext_resource type="Texture2D" uid="uid://dhd5v60co6hle" path="res://icon.svg" id="4_5toji"]
-[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/Ring.tscn" id="5_7dq8q"]
-[ext_resource type="Shader" path="res://materials/Ring.gdshader" id="6_0s0dt"]
-[ext_resource type="Texture2D" uid="uid://dqkjttiunc4fp" path="res://materials/rings_gradient_1d.tres" id="7_3s0gu"]
+[ext_resource type="PackedScene" uid="uid://c5j2s1fkejwet" path="res://scenes/RingFlat.tscn" id="5_28cb8"]
+[ext_resource type="Shader" path="res://materials/Ring.gdshader" id="6_2oct5"]
+[ext_resource type="Texture2D" uid="uid://dqkjttiunc4fp" path="res://materials/rings_gradient_1d.tres" id="7_0qomc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dy6y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcuem"]
 resource_local_to_scene = true
-shader = ExtResource("6_0s0dt")
-shader_parameter/rim_distance = 0.534052
-shader_parameter/shadow_width = 0.295706
+shader = ExtResource("6_2oct5")
+shader_parameter/rim_distance = 0.666667
+shader_parameter/shadow_width = 0.566667
 shader_parameter/shadow_edge_dispersion = 0.025
 shader_parameter/light_direction = Vector2(0.707, 0.707)
-shader_parameter/rings_texture = ExtResource("7_3s0gu")
+shader_parameter/rings_texture = ExtResource("7_0qomc")
 
-[node name="Saturn" type="Node2D" node_paths=PackedStringArray("ring")]
-position = Vector2(600, 309)
+[node name="Saturn" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_x37w7")
-ring = NodePath("PlanetSprite/Ring")
 metadata/_edit_horizontal_guides_ = [15.0]
+metadata/_edit_group_ = true
 
 [node name="PlanetSprite" type="Sprite2D" parent="."]
 material = ExtResource("2_ji6hm")
@@ -30,12 +29,12 @@ scale = Vector2(256, 256)
 texture = ExtResource("3_mwncb")
 
 [node name="LightSource" type="Marker2D" parent="PlanetSprite"]
-position = Vector2(1.89001, -0.65411)
+position = Vector2(-0.745387, -1.85591)
 scale = Vector2(0.0078125, 0.0078125)
 
 [node name="Icon" type="Sprite2D" parent="PlanetSprite/LightSource"]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_5toji")
 
-[node name="Ring" parent="PlanetSprite" instance=ExtResource("5_7dq8q")]
-material = SubResource("ShaderMaterial_8dy6y")
+[node name="Ring" parent="." instance=ExtResource("5_28cb8")]
+material = SubResource("ShaderMaterial_fcuem")

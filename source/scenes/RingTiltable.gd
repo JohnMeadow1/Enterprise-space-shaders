@@ -39,9 +39,9 @@ func update_materials():
 	if top:
 		top.material.set_shader_parameter("rim_distance", radius_inner / radius_outer)
 		top.material.set_shader_parameter("shadow_width", 0.95 / radius_outer)
-		top.material.set_shader_parameter("tilt", 1.0-tilt*0.8)
+		top.material.set_shader_parameter("tilt", 1.0 - tilt * 0.8)
 	if bottom:
 		bottom.material.set_shader_parameter("rim_distance", radius_inner / radius_outer)
 		bottom.material.set_shader_parameter("shadow_width", 0.95 / radius_outer)
-		bottom.material.set_shader_parameter("tilt", 1.0-tilt*0.8)
+		bottom.material.set_shader_parameter("tilt", 1.0 - tilt * 0.8)
 	
