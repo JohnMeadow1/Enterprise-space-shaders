@@ -13,3 +13,4 @@ config_version=5
 config/name="Enterprise game shaders"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+window/size/viewport_height=1080
